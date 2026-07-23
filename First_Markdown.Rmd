@@ -1,0 +1,124 @@
+
+age <- c( 
+Patient_01 = 23, Patient_02 = 67, Patient_03 = 41, Patient_04 = 58, Patient_05 = 34, Patient_06 = 72, Patient_07 = 29, Patient_08 = 46, Patient_09 = 81, Patient_10 = 19 
+)
+fev1 <- c(
+  Patient_01 = 85,
+  Patient_02 = 62,
+  Patient_03 = 45,
+  Patient_04 = 91,
+  Patient_05 = 38,
+  Patient_06 = 70,
+  Patient_07 = 55,
+  Patient_08 = 76,
+  Patient_09 = 49,
+  Patient_10 = 88
+)
+```{r}
+sum(age < 40) #age<40 will produce a logical vector automatically, and TURE=1, FALSE=0
+#sum(age < 40)        # 小于 40 岁的人数
+sum(age >= 60)       # 60 岁及以上人数
+mean(age < 40)       # 小于 40 岁的比例
+which(age < 40)      # 找出满足条件者的位置
+age[age < 40]        # 取出所有小于 40 岁的年龄
+names(age)[age < 40] # 取出这些患者的名字
+```
+Create a logical vector indicating which patients have reduced lung function (FEV1 < 70), then print the IDs of those patients
+```{r}
+reduced_logical <- fev1 <70
+reduced_logical
+print(names(fev1)[reduced_logical]) #The logical vector can be used as index too, R will automatically save TRUE one by one
+# names(reduced_logical)[TRUE],TRUE is an element with a length of one, so R will recycle it. 
+```
+How could I write an if statement that prints “Reduced lung function” if patient 2 has an FEV1 less than 70?
+if (fev1["Patient_02"]) {
+  print("Reduced lung function")
+```{r}
+if(fev1["Patient_02"]<70){print("Reduced lung function")}
+```
+Write a series of expressions that categorize Patient 02's FEV1 as:
+"Healthy" if FEV1 is greater than 80 
+"Moderate impairment" if FEV1 between 60 and 80 
+"Poor" if FEV1 is between 40 and 60 
+"Very poor" if FEV1 is less than 40
+```{r}
+if(fev1["Patient_02"]>80){ #neat writing:{end,}beginning
+  print("Healthy")
+}else if(fev1["Patient_02"]>60){ #don't need to write<=80
+  print("Moderate impairment")
+}else if(fev1["Patient_02"]>40){
+  print("Poor")
+}else{print("Very poor")}
+```
+Go through every patient’s FEV1 and print:
+"Healthy" if FEV1 is greater than 80 
+"Moderate impairment" if FEV1 between 60 and 80 
+"Poor" if FEV1 is between 40 and 60 
+"Very poor" if FEV1 is less than 40
+
+
+Now modify the loop to print something like:Patient_01: HealthyPatient_02: Moderate
+```{r}
+# for (patient_id in names(fev1)){
+#   for(patient in fev1){
+#     if(patient>80){
+#       print(paste(patient_id,"Healthy"))
+#       }else if(patient>60){
+#         print(paste(patient_id,"Moderate impairment"))
+#         }else if(fev1["Patient_02"]>40){
+#           print(paste(patient_id,"Poor"))
+#           }else{print(paste(patient_id,"Very poor"))}
+#   }
+# }
+
+for (patient_id in names(fev1)){
+  if(fev1[patient_id]>80){
+    print(paste0(patient_id,": Healthy"))
+    }else if(fev1[patient_id]>60){
+      print(paste0(patient_id,": Moderate impairment"))
+      }else if(fev1[patient_id]>40){
+        print(paste0(patient_id,": Poor"))
+      }else{print(paste0(patient_id,": Very poor"))}
+  }
+```
+
+
+Loops are often used to generate new variablesThe general approach:
+Create an empty object before the loop 
+Update the object during each iteration 
+Store the result for every observation
+Practice:
+Using the age vector, write a loop that creates a character vector containing:
+"over 30" if the patient is older than 30 
+"under 30" if the patient is 30 or younger 
+The final vector should have the same length as age.
+```{r}
+for(patient_id in names(age)){
+  if(age[patient_id]>30){
+    print(paste(patient_id,": over 30","age=",age[patient_id]))
+  }else{
+    print(paste(patient_id,": is 30 or younger","age=",age[patient_id]))
+  }
+}
+```
+Write a for loop that:
+Prints the age and FEV1 of each participant 
+Keeps a running total of participant ages 
+Stops the loop once the cumulative age exceeds 150 
+
+Example output:
+Patient_01: age = 23, FEV1 = 99
+Patient_02: age = 88, FEV1 = 14
+Patient_03: age = 55, FEV1 = 72
+```{r}
+cum_age <- 0  #vector can only add with a vector
+for(patient_id in names(age)){
+  print(paste0(patient_id,": age = ",age[patient_id],", FEV1 = ",fev1[patient_id]))
+  cum_age <- cum_age + age[patient_id]
+  if(cum_age > 150){
+    break
+  }
+}
+  
+
+```

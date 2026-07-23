@@ -1,0 +1,50 @@
+---
+title: "Functions"
+output: html_document
+---
+
+BC Children’s Hospital
+```{r}
+fev1_bcch <- c(
+  Patient_01 = 85,
+  Patient_02 = 62,
+  Patient_03 = 45,
+  Patient_04 = 91,
+  Patient_05 = 38,
+  Patient_06 = 70,
+  Patient_07 = 55,
+  Patient_08 = 76,
+  Patient_09 = 49,
+  Patient_10 = 88
+)
+age_bcch <- c(
+  Patient_01 = 23,
+  Patient_02 = 62,
+  Patient_03 = 45,
+  Patient_04 = 91,
+  Patient_05 = 38,
+  Patient_06 = 70,
+  Patient_07 = 55,
+  Patient_08 = 76,
+  Patient_09 = 49,
+  Patient_10 = 88
+)
+```
+Using the BCCH data, write a loop that creates a character vector called risk_bcch containing a risk classification for each patient.
+Assign patients as:
+"High risk" if: 
+Age is greater than 50 and 
+FEV1 is less than 70 
+"Moderate risk" if: 
+Age is greater than 30 or 
+FEV1 is less than 70 
+"Low risk" otherwise 
+The final vector should:
+Have the same length as the input data 
+Use patient IDs as names
+```{r}
+risk_bcch <- c(for(id in names(age_bcch)){
+  if(age_bcch[id]>50 & fev1_bcch < 70){id = "High risk"}
+})
+risk_bcch
+```
