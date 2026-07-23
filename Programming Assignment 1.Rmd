@@ -1,0 +1,209 @@
+---
+title: "Programming Assignment 1"
+output: html_document
+---
+
+Complete all questions by filling in the code chunks.
+
+This assessment will test your ability to work with vectors, logical operators, and loops in R.
+
+```{r setp, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+
+---
+
+# Question 1 (3 points)
+
+Amrit got a grade of **80%** on his exam. Sam got a grade of **90%** on his exam.
+
+Replace the `NA` values with the correct answers.
+
+1. Create a variable called `amrit` and assign Amrit's grade.
+2. Create a variable called `sam` and assign Sam's grade.
+3. Use the built-in `mean()` function to calculate their average grade.
+
+```{r question-1}
+# Define a variable for Amrit's grade
+amrit <- NA
+amrit <- 80
+
+# Define a variable for Sam's grade
+sam <- NA
+sam <- 90
+
+# Calculate the average grade
+avg <- mean(c(NA, NA))
+avg <- mean(c(amrit,sam))
+print(paste0("Amrit's grade is ", amrit,"%"))
+print(paste0("Sam's grade is ", sam,"%"))
+print(paste0("The mean grade is ", avg,"%"))
+```
+
+---
+
+# Load the Sample Data
+
+Use the following vector of results from a biology course quiz for all questions going forward. Each value represents the quiz score for one student. You will use R to summarize the results and classify student performance.
+
+```{r load-data}
+scores <- c(
+  Alice = 88,
+  Ben = 73,
+  Chloe = 95,
+  Daniel = 61,
+  Emma = 42,
+  Finn = 79,
+  Grace = 84,
+  Henry = 56,
+  Isla = 91,
+  Jack = 67
+)
+```
+---
+
+
+# Question 2 (3 points)
+
+How many students scored **80 or higher**?
+
+```{r question-2}
+sum(scores >= 80)
+```
+
+---
+
+# Question 3 (3 points)
+
+How many students scored **between 60 and 80 (inclusive)**?
+
+```{r question-3}
+sum( 60 <= scores & scores <= 80)
+```
+
+---
+
+# Question 4 (3 points)
+
+Create a logical vector called `passed` that is `TRUE` for students with a score of **50 or higher**.
+
+Then print the names of the students who passed.
+
+```{r question-4}
+passed <- scores >= 50
+print(names(passed))
+```
+
+---
+
+# Question 5 (3 points)
+
+Write a `for` loop that prints every score.
+
+Example output:
+
+```
+88
+73
+95
+...
+```
+
+```{r question-5}
+
+for(student in scores){
+  print(student)
+}
+```
+
+---
+
+# Question 6 (3 points)
+
+Fill in the `...` with the correct answer.
+
+Write a `for` loop that prints:
+
+- `"Pass"` if the score is **50 or higher**
+- `"Fail"` otherwise
+
+Example output:
+
+```
+Pass
+Pass
+Pass
+Fail
+...
+```
+
+```{r question-6}
+for (student in scores) {
+  if (student >= 50) {
+    print("Pass")
+  } else {
+    print("Fail")
+  }
+}
+```
+
+---
+
+# Question 7 (3 points)
+
+Fill in the `...` with the correct answer.
+
+Modify your previous loop so that it prints the student's name as well.
+
+Example output:
+
+```
+Alice: Pass
+Ben: Pass
+Emma: Fail
+...
+```
+
+```{r question-7}
+for (id in names(scores)) {
+  if (scores[id] > 50) {
+    print(paste0(id, ": Pass"))
+  } else {
+    print(paste0(id, ": Fail"))
+  }
+}
+```
+
+
+---
+
+# BONUS - Question 8 (3 points)
+
+Write a `for` loop that:
+
+- Prints each student's name, score and whether they passed.
+- Keeps a running total of all scores.
+- Stops once the running total is greater than **350**.
+
+Expected output:
+```
+Alice: 88 (Pass)
+Ben: 73 (Pass)
+Chloe: 95 (Pass)
+Daniel: 61 (Pass)
+Emma: 42 (Fail)
+```
+
+```{r bonus-question}
+total_score <- 0
+for(id in names(scores)){if (scores[id] > 50) {
+    print(paste0(id, ": ",scores[id]," (Pass)"))
+  } else {
+    print(paste0(id, ": ",scores[id]," (Fail)"))
+  }
+  total_score <- total_score + scores[id]
+  if(total_score > 350){
+    break
+  }
+}
+```
