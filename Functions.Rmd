@@ -43,8 +43,19 @@ The final vector should:
 Have the same length as the input data 
 Use patient IDs as names
 ```{r}
-risk_bcch <- c(for(id in names(age_bcch)){
-  if(age_bcch[id]>50 & fev1_bcch < 70){id = "High risk"}
-})
+risk_bcch <- character(length(age_bcch)) #create a character vector
+names(risk_bcch) <- names(age_bcch)
+for(id in names(risk_bcch)){
+  if(age_bcch[id]>50 & fev1_bcch[id] < 70){risk_bcch[id] <- "High risk"}else if (age_bcch[id] > 30 | fev1_bcch[id] < 70){
+    risk_bcch[id] <- "Moderate risk"
+  } else{
+    risk_bcch[id] <- "Low risk"
+  }
+}
 risk_bcch
+```
+Try to reduce the amount of code required to classify patient risk by defining a function called `determine_risk`Think about how many and what kind of arguments it should take inWhat should it return?
+```{r}
+determine_risk <- function()
+
 ```
