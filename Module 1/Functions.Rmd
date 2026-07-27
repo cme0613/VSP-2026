@@ -56,6 +56,11 @@ risk_bcch
 ```
 Try to reduce the amount of code required to classify patient risk by defining a function called `determine_risk`Think about how many and what kind of arguments it should take inWhat should it return?
 ```{r}
-determine_risk <- function()
-
+determine_risk = function(age,fev1)
+  if(age[id]>50 & fev1[id] < 70){risk[id] <- "High risk"}else if (age[id] > 30 | fev1_bcch[id] < 70){
+    risk_bcch[id] <- "Moderate risk"
+  } else{
+    risk_bcch[id] <- "Low risk"
+  }
+}
 ```

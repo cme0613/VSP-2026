@@ -70,16 +70,28 @@ Now modify the loop to print something like:Patient_01: HealthyPatient_02: Mo
 #           }else{print(paste(patient_id,"Very poor"))}
 #   }
 # }
-
-for (patient_id in names(fev1)){
-  if(fev1[patient_id]>80){
-    print(paste0(patient_id,": Healthy"))
-    }else if(fev1[patient_id]>60){
-      print(paste0(patient_id,": Moderate impairment"))
-      }else if(fev1[patient_id]>40){
-        print(paste0(patient_id,": Poor"))
-      }else{print(paste0(patient_id,": Very poor"))}
-  }
+fev1 <- c(
+  Patient_01 = 85,
+  Patient_02 = 62,
+  Patient_03 = 45,
+  Patient_04 = 91,
+  Patient_05 = 38,
+  Patient_06 = 70,
+  Patient_07 = 55,
+  Patient_08 = 76,
+  Patient_09 = 49,
+  Patient_10 = 88
+)
+print(fev1["Patient_01"])
+# for (patient_id in names(fev1)){
+#   if(fev1[patient_id]>80){
+#     print(paste0(patient_id,": Healthy"))
+#     }else if(fev1[patient_id]>60){
+#       print(paste0(patient_id,": Moderate impairment"))
+#       }else if(fev1[patient_id]>40){
+#         print(paste0(patient_id,": Poor"))
+#       }else{print(paste0(patient_id,": Very poor"))}
+#   }
 ```
 
 

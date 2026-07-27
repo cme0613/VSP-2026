@@ -1,0 +1,181 @@
+---
+title: "Programming Assignment 2"
+output: html_document
+---
+
+Complete all questions by filling in the code chunks.
+
+This assessment will test your ability to work with `dplyr` for data manipulation and `ggplot2` for plotting.
+
+```{r setp, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
+```
+
+---
+
+# Setup
+
+Run the two cells below before starting the assessment.
+
+```{r libraries}
+library(ggplot2)
+library(dplyr)
+
+```
+
+```{r load-data}
+flowers <- iris
+head(flowers)
+```
+
+---
+
+# Question 1 (3 points)
+
+How many observations (rows) are in the dataset?
+
+```{r question-1}
+nrow(flowers)
+```
+
+---
+
+# Question 2 (3 points)
+
+Display only the flowers that belong to the species `"setosa"`.
+
+```{r question-2}
+flowers %>%
+  filter(Species=="setosa")
+```
+
+---
+
+# Question 3 (3 points)
+
+Create a new column called `PetalSize`.
+
+A flower should be classified as:
+
+- `"Large"` if `Petal.Length` is **greater than or equal to 5**
+- `"Small"` otherwise.
+
+```{r question-3}
+flowers %>%
+  mutate(
+    PetalSize = ifelse(Petal.Length >= 5,"Large","Small")
+  )
+```
+
+---
+
+# Question 4 (3 points)
+
+Calculate the **average Sepal.Length** for each species.
+
+```{r question-4}
+flowers %>%
+  group_by(Species) %>%
+  summarise(
+    MeanSepalLength = mean(Sepal.Length)
+  )
+```
+
+---
+
+# Question 5 (3 points)
+
+Complete the pipeline below.
+
+Display only the columns:
+
+- `Species`
+- `Sepal.Length`
+- `Petal.Length`
+
+Then arrange the rows from **smallest Petal.Length to largest**.
+
+```{r question-5}
+flowers %>%
+  select("Species","Sepal.Length","Petal.Length") %>%
+  arrange(Petal.Length)
+```
+
+---
+
+# Question 6 (3 points)
+
+Complete the code below to produce a scatterplot.
+
+- x-axis: `Sepal.Length`
+- y-axis: `Petal.Length`
+
+```{r question-6}
+ggplot(flowers, aes(x = Sepal.Length, y = Petal.Length)) +
+  geom_point()
+```
+
+---
+
+# Question 7 (3 points)
+
+Modify the plot from Question 6 so that:
+
+- Points are coloured by `Species`
+- Add a title: `"Sepal Length vs Petal Length"`
+- Label the x-axis `"Sepal Length (cm)"`
+- Label the y-axis `"Petal Length (cm)"`
+
+```{r question-7}
+ggplot(flowers, aes(x = Sepal.Length, y = Petal.Length, colour = Species)) +
+  geom_point() +
+  labs(
+    title = "Sepal Length vs Petal Length",
+    x = "Sepal Length (cm)",
+    y = "Petal Length (cm)"
+  )
+```
+
+---
+
+# BONUS - Question 8 (3 points)
+
+Create a function called `plot_species()` that takes in a species name (e.g. `"setosa"`) and creates a customized scatterplot using only flowers from that species.
+
+The function should:
+
+- Filter the dataset to include only the selected species
+- Create a scatterplot showing:
+  - Sepal length on the x-axis
+  - Petal length on the y-axis
+- Color points based on petal width
+- Scale point size based on sepal width
+- Add a smooth trend line (try ?geom_smooth)
+- Add a title that dynamically includes the species name
+- Add informative axis labels
+
+Your function should work for all three species. Make sure to add proper function documentation.
+
+```{r bonus-question}
+plot_species <- function(FlowerName) {
+  filtered_flowers = filter(flowers,Species==FlowerName)
+ggplot(filtered_flowers, aes(x = Sepal.Length, y = Petal.Length, colour = Petal.Width)) +
+  geom_point() +
+  geom_smooth() +
+  labs(
+    title =paste0("Category Color by Petal Width in ", FlowerName),
+    x = "Sepal Length (cm)",
+    y = "Petal Length (cm)"
+  )
+}
+
+# Test your function
+print(plot_species("setosa"))
+print(plot_species("versicolor"))
+print(plot_species("virginica"))
+```
+test
+```{r}
+?geom_smooth
+```
+```
