@@ -1,0 +1,324 @@
+---
+title: "CMDD: Motivation and study metadata"
+author: "Amrit Singh"
+date: "July 28, 2026"
+date-format: "MMMM D, YYYY"
+
+format:
+  revealjs:
+    width: 1000
+    height: 750
+    margin: 0
+    center: false
+    css: metadata.css
+    center-title-slide: false
+    title-slide-attributes:
+      data-background-image: bkg_slides/ubc-title-background.png
+      data-background-size: cover
+      data-background-position: center
+
+editor: visual
+---
+
+## David Fajgenbaum {.nostretch}
+
+![](slide_images/david/Slide1.png){.nostretch height="100%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Study schema {.nostretch}
+
+![](slide_images/david/Slide2.png){.nostretch height="100%" fig-align="center"}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Serum proteomics {.nostretch}
+
+![](slide_images/david/Slide3.png){.nostretch height="100%" fig-align="center"}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Drug repurposing of sirolimus {.nostretch}
+
+![](slide_images/david/Slide4.png){.nostretch height="78%" fig-align="center"}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Learning objectives
+
+1.  Define omics and multiomics
+2.  Be able to search for gene-expression datasets
+3.  Learn about sample characteristics and how to compute descriptive statistics
+
+------------------------------------------------------------------------
+
+## Motivation - multiomics
+
+![](slide_images/motivation/Slide1.png){.absolute top="120" left="70" width="850"}
+
+:::: {.absolute top="600" left="100" width="850"}
+-   different sources of 'omics' are required to holistically understand the biological system
+
+::: citation
+Canzler S et al. *Archives of Toxicology.* 2020;94:371–388.
+:::
+::::
+
+------------------------------------------------------------------------
+
+## Computational Biology Lab
+
+![](slide_images/motivation/Slide2.png){.nostretch height="65%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Multimodal data integration
+
+![](slide_images/motivation/Slide3.png){.nostretch height="100%" fig-align="center"}
+
+::: citation
+Shannon CP et al. *Journal of Molecular Biology.* 436 (2024) 168522.
+:::
+
+------------------------------------------------------------------------
+
+## Heart Failure Multiomics
+
+![](slide_images/motivation/Slide4.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Singh et al. *Can J Cardiol* 2019; 35(4):471-479. Figure modified from Ritchie M et al. *Nat Rev Genet* 2015 16(2):85-97.
+:::
+
+------------------------------------------------------------------------
+
+## First week of life multiomics
+
+![](slide_images/motivation/Slide5.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Lee AH et al. *Nat Commun* 2019; 10:1092.
+:::
+
+------------------------------------------------------------------------
+
+## BCG vaccine skin-blood crosstalk
+
+![](slide_images/motivation/Slide6.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Singh A et al. *bioRxiv* 2025.11.19.689184.
+:::
+
+------------------------------------------------------------------------
+
+## Reality - Transcriptomics (mRNA)
+
+![](slide_images/mrna/Slide1.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Bhadra M et al. *Human Genetics* 2020 139(3):1-13.
+:::
+
+------------------------------------------------------------------------
+
+## Transcriptomics is not perfect!
+
+![](slide_images/mrna/Slide2.png){.nostretch height="65%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Transcriptomics is not perfect!
+
+![](slide_images/mrna/Slide3.png){.nostretch height="65%" fig-align="center"}
+
+
+------------------------------------------------------------------------
+
+## Drug repurposing using transcriptomics {.smaller}
+
+![](slide_images/mrna/Slide4.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Zhao Y et al. *EBioMedicine* 2025 Feb:112:105553.
+:::
+
+------------------------------------------------------------------------
+
+## How transcriptomics data is created {.smaller}
+
+![](slide_images/mrna/Slide5.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Bandari N et al. *Front Mol Biosci* 2022;9:907150.
+:::
+
+------------------------------------------------------------------------
+
+## What transcriptomics data looks like {.smaller}
+
+![](slide_images/mrna/Slide6.png){.nostretch height="65%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## What transcriptomics data looks like {.smaller}
+
+![](slide_images/mrna/Slide7.png){.nostretch height="65%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## What sample metadata data looks like {.smaller}
+
+![](slide_images/mrna/Slide8.png){.nostretch height="65%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+## Transcriptomics analysis pipeline
+
+![](slide_images/mrna/Slide9.png){.nostretch height="65%" fig-align="center"}
+
+::: citation
+Sanchis P et al. *STAR Protocols* 2021 2(2):100478
+:::
+
+------------------------------------------------------------------------
+
+## Gene Expression Omnibus
+
+![](slide_images/mrna/Slide10.png){.absolute top="120" left="70" width="850"}
+
+::: {.absolute top="600" left="100" width="850"}
+https://www.ncbi.nlm.nih.gov/gds
+:::
+
+------------------------------------------------------------------------
+
+## Bioconductor
+
+![](slide_images/mrna/Slide11.png){.absolute top="120" left="70" width="850"}
+
+::: {.absolute top="600" left="100" width="850"}
+https://www.bioconductor.org/
+:::
+
+------------------------------------------------------------------------
+
+## GEOQuery
+
+-   Get data from NCBI Gene Expression Omnibus (GEO)
+
+```{r, eval = FALSE, echo = TRUE}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("GEOquery")
+```
+
+-   load library and helper libraries
+
+```{r, eval = FALSE, echo = TRUE}
+library("GEOquery")
+library("tidyverse")
+```
+
+------------------------------------------------------------------------
+
+## Download a GEO data
+
+![](slide_images/mrna/Slide12.png){.absolute top="120" left="70" width="850"}
+
+```{r, eval = FALSE, echo = TRUE}
+gse <- getGEO("GSE19187")
+```
+
+------------------------------------------------------------------------
+
+## GSE19187 Metadata
+
+-   Get data from NCBI Gene Expression Omnibus (GEO)
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- pData(gse$GSE19187_series_matrix.txt.gz)
+```
+
+-   select relevant variables
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- metadata %>% 
+  select("age:ch1", "disease state:ch1",
+                "gender:ch1")
+colnames(metadata) <- c("age", "disease", "sex")
+```
+
+------------------------------------------------------------------------
+
+## Clean-up Metadata
+
+<br>
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- metadata %>% 
+  mutate(age = as.numeric(gsub(" y", "", age)))
+```
+
+<br> 
+
+### summarise disease x sex
+
+```{r, eval = FALSE, echo = TRUE}
+metadata %>% 
+  group_by(disease, sex) %>% 
+  summarise(n = n()) %>% 
+  pivot_wider(names_from = disease, values_from = n)
+  
+```
+
+
+------------------------------------------------------------------------
+
+## summarise disease x age
+
+```{r, eval = FALSE, echo = TRUE}
+metadata %>% 
+  group_by(disease) %>% 
+  summarise(avg_age = signif(mean(age), 0), 
+            sd_age = signif(sd(age), 1)) %>% 
+  mutate(age = paste0(avg_age, "±", sd_age)) %>% 
+  select(disease, age) %>% 
+  pivot_wider(names_from = disease, values_from = age)
+  
+```
+
+
+------------------------------------------------------------------------
+
+## Table 1 summary
+
+```{r, eval = FALSE, echo = TRUE}
+library(table1)
+
+render_continuous <- function(x) {
+  c(
+    "",
+    "Mean ± SD" = sprintf("%.1f ± %.1f", mean(x, na.rm = TRUE), sd(x, na.rm = TRUE))
+  )
+}
+
+table1(
+  ~ age + sex | disease,
+  data = metadata,
+  render.continuous = render_continuous
+)
+```

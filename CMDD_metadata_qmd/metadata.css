@@ -1,0 +1,145 @@
+/* =========================================================
+   TITLE SLIDE
+   ========================================================= */
+
+/* Keep the complete title block inside the left white panel */
+.reveal .slides section#title-slide {
+  box-sizing: border-box;
+  padding-top: 13%;
+  text-align: center;
+}
+
+/* Presentation title */
+.reveal .slides section#title-slide h1.title {
+  width: 60%;
+  margin: 0 auto 0.45em 3%;
+
+  font-size: 1.55em;
+  line-height: 1.08;
+  text-align: center;
+}
+
+/* Author block */
+.reveal .slides section#title-slide .quarto-title-authors,
+.reveal .slides section#title-slide p.author {
+  width: 60%;
+  margin-left: 3%;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Date */
+.reveal .slides section#title-slide p.date {
+  width: 60%;
+  margin-left: 3%;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+/* =========================================================
+   CONTENT SLIDES
+   ========================================================= */
+
+/* Apply the PowerPoint-like background to all content slides */
+.reveal .slides section:not(#title-slide) {
+  box-sizing: border-box;
+
+  background-image: url("bkg_slides/ubc-slide-background.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /*
+    Reserve space for:
+    - the dark-blue heading bar at the top
+    - the image/logo banner on the right
+  */
+  padding-top: 62px;
+  padding-right: 190px;
+  padding-bottom: 45px;
+  padding-left: 65px;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   CONTENT-SLIDE HEADINGS
+   ========================================================= */
+
+/* Make slide headings white inside the dark-blue bar */
+.reveal .slides section:not(#title-slide) > h1,
+.reveal .slides section:not(#title-slide) > h2 {
+  box-sizing: border-box;
+  width: 100%;
+
+  margin-top: 0;
+  margin-bottom: 0.65em;
+
+  color: white !important;
+  font-size: 1.2em;
+  line-height: 1.1;
+  text-align: left;
+}
+
+
+/* =========================================================
+   CONTENT-SLIDE BODY
+   ========================================================= */
+
+/* Keep slide content inside the usable area */
+.reveal .slides section:not(#title-slide) > p,
+.reveal .slides section:not(#title-slide) > ul,
+.reveal .slides section:not(#title-slide) > ol,
+.reveal .slides section:not(#title-slide) > blockquote,
+.reveal .slides section:not(#title-slide) > table,
+.reveal .slides section:not(#title-slide) > div {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Slightly reduce body text so longer content fits */
+.reveal .slides section:not(#title-slide) p,
+.reveal .slides section:not(#title-slide) li {
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+/* Prevent long links and words from entering the side banner */
+.reveal .slides section:not(#title-slide) p,
+.reveal .slides section:not(#title-slide) li,
+.reveal .slides section:not(#title-slide) a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+
+/* =========================================================
+   OPTIONAL: CODE AND TABLES
+   ========================================================= */
+
+/* Keep code blocks within the available slide width */
+.reveal .slides section:not(#title-slide) pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 0.65em;
+}
+
+/* Keep tables within the available slide width */
+.reveal .slides section:not(#title-slide) table {
+  width: 100%;
+  font-size: 0.75em;
+}
+
+.reveal .citation {
+  position: absolute;
+  left: 5%;
+  bottom: -5%;
+  width: 90%;
+  font-size: 0.42em;
+  line-height: 1.1;
+  text-align: left;
+  color: #333;
+}

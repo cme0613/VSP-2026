@@ -1,0 +1,325 @@
+/* =========================================================
+   TITLE SLIDE
+   ========================================================= */
+
+.reveal .slides section#title-slide {
+  box-sizing: border-box;
+  padding-top: 16%;
+  text-align: center;
+}
+
+.reveal .slides section#title-slide h1.title {
+  width: 60%;
+  margin: 0 auto 0.45em 3%;
+  font-size: 1.55em;
+  line-height: 1.08;
+  text-align: center;
+}
+
+.reveal .slides section#title-slide .quarto-title-authors,
+.reveal .slides section#title-slide p.author,
+.reveal .slides section#title-slide p.date {
+  width: 60%;
+  margin-left: 3%;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* =========================================================
+   CONTENT SLIDES
+   ========================================================= */
+
+.reveal .slides section:not(#title-slide) {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background-image: url("bkg_slides/ubc-slide-background.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding-top: 62px;
+  padding-right: 190px;
+  padding-bottom: 50px;
+  padding-left: 65px;
+
+  text-align: left;
+}
+
+.reveal .slides section:not(#title-slide) > h1,
+.reveal .slides section:not(#title-slide) > h2 {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0.45em;
+  color: white !important;
+  font-size: 1.2em;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.reveal .slides section:not(#title-slide) > p,
+.reveal .slides section:not(#title-slide) > ul,
+.reveal .slides section:not(#title-slide) > ol,
+.reveal .slides section:not(#title-slide) > blockquote,
+.reveal .slides section:not(#title-slide) > table,
+.reveal .slides section:not(#title-slide) > div {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.reveal .slides section:not(#title-slide) p,
+.reveal .slides section:not(#title-slide) li {
+  font-size: 0.9em;
+  line-height: 1.25;
+}
+
+.reveal .slides section:not(#title-slide) p,
+.reveal .slides section:not(#title-slide) li,
+.reveal .slides section:not(#title-slide) a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+.reveal .slides section:not(#title-slide) img.slide-image,
+.reveal .slides section:not(#title-slide) img.slide-image-small,
+.reveal .slides section:not(#title-slide) img.slide-image-code {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+/* Standard image-only slides */
+.reveal .slides section:not(#title-slide) img.slide-image {
+  max-height: 520px;
+}
+
+/* Slides that also contain text or a URL below the image */
+.reveal .slides section:not(#title-slide) img.slide-image-small {
+  max-height: 430px;
+}
+
+/* Slide with a code block above the screenshot */
+.reveal .slides section:not(#title-slide) img.slide-image-code {
+  max-height: 390px;
+  margin-top: 0.25em;
+}
+
+/* Prevent paragraph wrappers around images from adding excess spacing */
+.reveal .slides section:not(#title-slide) p:has(> img.slide-image),
+.reveal .slides section:not(#title-slide) p:has(> img.slide-image-small),
+.reveal .slides section:not(#title-slide) p:has(> img.slide-image-code) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   CITATIONS AND FOOTERS
+   ========================================================= */
+
+.reveal .slides section:not(#title-slide) .citation {
+  position: absolute;
+  left: 65px;
+  right: 190px;
+  bottom: 10px;
+  width: auto;
+  margin: 0;
+  font-size: 0.38em;
+  line-height: 1.1;
+  text-align: left;
+  color: #333;
+}
+
+.reveal .slides section:not(#title-slide) .citation p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.reveal .slides section:not(#title-slide) .slide-note {
+  margin-top: 0.35em;
+  font-size: 0.8em;
+  line-height: 1.2;
+}
+
+.reveal .slides section:not(#title-slide) .slide-note p {
+  margin: 0;
+}
+
+.reveal .slides section:not(#title-slide) .slide-footer {
+  position: absolute;
+  left: 65px;
+  right: 190px;
+  bottom: 24px;
+  width: auto;
+  margin: 0;
+  text-align: center;
+  font-size: 0.62em;
+}
+
+.reveal .slides section:not(#title-slide) .slide-footer p {
+  margin: 0;
+}
+
+/* =========================================================
+   CODE AND TABLES
+   ========================================================= */
+
+.reveal .slides section:not(#title-slide) pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 0.58em;
+  line-height: 1.15;
+  margin-top: 0.2em;
+  margin-bottom: 0.45em;
+}
+
+.reveal .slides section:not(#title-slide) code {
+  line-height: inherit;
+}
+
+.reveal .slides section:not(#title-slide) table {
+  width: 100%;
+  font-size: 0.72em;
+}
+
+.reveal .slides section.smaller p,
+.reveal .slides section.smaller li {
+  font-size: 0.78em;
+  line-height: 1.18;
+}
+
+.reveal .slides section.smaller h3 {
+  margin-top: 0.35em;
+  margin-bottom: 0.2em;
+  font-size: 0.78em;
+}
+
+.reveal .slides section.smaller pre {
+  font-size: 0.52em;
+  line-height: 1.1;
+}
+
+/* =========================================================
+   PRINT/PDF
+   ========================================================= */
+
+
+/* Reveal adds .print-pdf when the URL contains ?print-pdf. */
+.reveal.print-pdf .slides section#title-slide {
+  box-sizing: border-box !important;
+  padding-top: 16% !important;
+  padding-right: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 0 !important;
+}
+
+.reveal.print-pdf .slides section:not(#title-slide) {
+  position: relative !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding: 62px 190px 50px 65px !important;
+  background-image: url("bkg_slides/ubc-slide-background.png") !important;
+  background-size: 100% 100% !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.reveal.print-pdf .slides section:not(#title-slide) > h1,
+.reveal.print-pdf .slides section:not(#title-slide) > h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0.45em !important;
+  color: white !important;
+  font-size: 1.2em !important;
+  line-height: 1.1 !important;
+}
+
+@page {
+  size: 1000px 750px;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body,
+  .reveal,
+  .reveal .slides {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Reveal's print stylesheet resets section padding. Restore it. */
+  .reveal .slides section#title-slide {
+    box-sizing: border-box !important;
+    padding-top: 16% !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .reveal .slides section:not(#title-slide) {
+    position: relative !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+
+    padding-top: 62px !important;
+    padding-right: 190px !important;
+    padding-bottom: 50px !important;
+    padding-left: 65px !important;
+
+    background-image: url("bkg_slides/ubc-slide-background.png") !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Reveal's print rules can also override heading colour and spacing. */
+  .reveal .slides section:not(#title-slide) > h1,
+  .reveal .slides section:not(#title-slide) > h2 {
+    margin-top: 0 !important;
+    margin-bottom: 0.45em !important;
+    color: white !important;
+    font-size: 1.2em !important;
+    line-height: 1.1 !important;
+  }
+
+  .reveal .slides section:not(#title-slide) img.slide-image {
+    max-height: 520px !important;
+  }
+
+  .reveal .slides section:not(#title-slide) img.slide-image-small {
+    max-height: 430px !important;
+  }
+
+  .reveal .slides section:not(#title-slide) img.slide-image-code {
+    max-height: 390px !important;
+  }
+
+  .reveal .slides section:not(#title-slide) .citation {
+    left: 65px !important;
+    right: 190px !important;
+    bottom: 10px !important;
+  }
+
+  .reveal .slides section:not(#title-slide) .slide-footer {
+    left: 65px !important;
+    right: 190px !important;
+    bottom: 24px !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

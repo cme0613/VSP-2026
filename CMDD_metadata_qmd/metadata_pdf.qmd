@@ -1,0 +1,343 @@
+---
+title: "CMDD: Motivation and study metadata"
+author: "Amrit Singh"
+date: "July 28, 2026"
+date-format: "MMMM D, YYYY"
+
+format:
+  revealjs:
+    width: 1000
+    height: 750
+    margin: 0
+    center: false
+    slide-level: 2
+    transition: none
+    pdf-separate-fragments: false
+    css: metadata_pdf.css
+    center-title-slide: false
+    title-slide-attributes:
+      data-background-image: bkg_slides/ubc-title-background.png
+      data-background-size: cover
+      data-background-position: center
+
+editor: visual
+---
+
+## David Fajgenbaum
+
+![](slide_images/david/Slide1.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## Study schema
+
+![](slide_images/david/Slide2.png){.slide-image}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Serum proteomics
+
+![](slide_images/david/Slide3.png){.slide-image}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Drug repurposing of sirolimus
+
+![](slide_images/david/Slide4.png){.slide-image}
+
+::: citation
+Fajgenbaum DC et al. *J Clin Invest.* 2019;129(10):4451–4463.
+:::
+
+------------------------------------------------------------------------
+
+## Learning objectives
+
+1.  Define omics and multiomics
+2.  Be able to search for gene-expression datasets
+3.  Learn about sample characteristics and how to compute descriptive statistics
+
+------------------------------------------------------------------------
+
+## Motivation - multiomics
+
+![](slide_images/motivation/Slide1.png){.slide-image-small}
+
+::: slide-note
+Different sources of omics data are required to understand a biological system holistically.
+:::
+
+::: citation
+Canzler S et al. *Archives of Toxicology.* 2020;94:371–388.
+:::
+
+------------------------------------------------------------------------
+
+## Computational Biology Lab
+
+![](slide_images/motivation/Slide2.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## Multimodal data integration
+
+![](slide_images/motivation/Slide3.png){.slide-image}
+
+::: citation
+Shannon CP et al. *Journal of Molecular Biology.* 2024;436:168522.
+:::
+
+------------------------------------------------------------------------
+
+## Heart failure multiomics
+
+![](slide_images/motivation/Slide4.png){.slide-image}
+
+::: citation
+Singh A et al. *Can J Cardiol.* 2019;35(4):471–479. Figure modified from Ritchie M et al. *Nat Rev Genet.* 2015;16(2):85–97.
+:::
+
+------------------------------------------------------------------------
+
+## First week of life multiomics
+
+![](slide_images/motivation/Slide5.png){.slide-image}
+
+::: citation
+Lee AH et al. *Nat Commun.* 2019;10:1092.
+:::
+
+------------------------------------------------------------------------
+
+## BCG vaccine skin-blood crosstalk
+
+![](slide_images/motivation/Slide6.png){.slide-image}
+
+::: citation
+Singh A et al. *bioRxiv.* 2025.11.19.689184.
+:::
+
+------------------------------------------------------------------------
+
+## Reality - transcriptomics (mRNA)
+
+![](slide_images/mrna/Slide1.png){.slide-image}
+
+::: citation
+Bhadra M et al. *Human Genetics.* 2020;139(3):1–13.
+:::
+
+------------------------------------------------------------------------
+
+## Transcriptomics is not perfect!
+
+![](slide_images/mrna/Slide2.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## Transcriptomics is not perfect!
+
+![](slide_images/mrna/Slide3.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## Drug repurposing using transcriptomics
+
+![](slide_images/mrna/Slide4.png){.slide-image}
+
+::: citation
+Zhao Y et al. *EBioMedicine.* 2025;112:105553.
+:::
+
+------------------------------------------------------------------------
+
+## How transcriptomics data are created {.smaller}
+
+![](slide_images/mrna/Slide5.png){.slide-image}
+
+::: citation
+Bandari N et al. *Front Mol Biosci.* 2022;9:907150.
+:::
+
+------------------------------------------------------------------------
+
+## What transcriptomics data look like
+
+![](slide_images/mrna/Slide6.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## What transcriptomics data look like
+
+![](slide_images/mrna/Slide7.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## What sample metadata look like
+
+![](slide_images/mrna/Slide8.png){.slide-image}
+
+------------------------------------------------------------------------
+
+## Transcriptomics analysis pipeline
+
+![](slide_images/mrna/Slide9.png){.slide-image}
+
+::: citation
+Sanchis P et al. *STAR Protocols.* 2021;2(2):100478.
+:::
+
+------------------------------------------------------------------------
+
+## Gene Expression Omnibus
+
+![](slide_images/mrna/Slide10.png){.slide-image-small}
+
+::: slide-footer
+<https://www.ncbi.nlm.nih.gov/gds>
+:::
+
+------------------------------------------------------------------------
+
+## Bioconductor
+
+![](slide_images/mrna/Slide11.png){.slide-image-small}
+
+::: slide-footer
+<https://www.bioconductor.org/>
+:::
+
+------------------------------------------------------------------------
+
+## GEOquery
+
+-   Get data from NCBI Gene Expression Omnibus (GEO).
+
+```{r, eval = FALSE, echo = TRUE}
+if (!require("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+BiocManager::install("GEOquery")
+```
+
+-   Load GEOquery and helper libraries.
+
+```{r, eval = FALSE, echo = TRUE}
+library(GEOquery)
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+## Download GEO data 
+
+![](slide_images/mrna/Slide12.png){.slide-image-code}
+
+<br>
+
+```{r, eval = FALSE, echo = TRUE}
+gse <- getGEO("GSE19187")
+```
+
+
+------------------------------------------------------------------------
+
+## GSE19187 metadata 
+
+<br>
+
+-   Extract sample metadata from the GEO object.
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- pData(gse$GSE19187_series_matrix.txt.gz)
+```
+
+-   Select and rename the relevant variables.
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- metadata %>%
+  select(
+    "age:ch1",
+    "disease state:ch1",
+    "gender:ch1"
+  )
+
+colnames(metadata) <- c("age", "disease", "sex")
+```
+
+------------------------------------------------------------------------
+
+## Clean up metadata 
+
+<br>
+
+```{r, eval = FALSE, echo = TRUE}
+metadata <- metadata %>%
+  mutate(age = as.numeric(gsub(" y", "", age)))
+```
+
+### Summarise disease by sex
+
+```{r, eval = FALSE, echo = TRUE}
+metadata %>%
+  group_by(disease, sex) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  pivot_wider(
+    names_from = disease,
+    values_from = n
+  )
+```
+
+------------------------------------------------------------------------
+
+## Summarise disease by age 
+
+```{r, eval = FALSE, echo = TRUE}
+metadata %>%
+  group_by(disease) %>%
+  summarise(
+    avg_age = signif(mean(age, na.rm = TRUE), 2),
+    sd_age = signif(sd(age, na.rm = TRUE), 2),
+    .groups = "drop"
+  ) %>%
+  mutate(age = paste0(avg_age, " ± ", sd_age)) %>%
+  select(disease, age) %>%
+  pivot_wider(
+    names_from = disease,
+    values_from = age
+  )
+```
+
+------------------------------------------------------------------------
+
+## Table 1 summary 
+
+```{r, eval = FALSE, echo = TRUE}
+library(table1)
+
+render_continuous <- function(x) {
+  c(
+    "",
+    "Mean ± SD" = sprintf(
+      "%.1f ± %.1f",
+      mean(x, na.rm = TRUE),
+      sd(x, na.rm = TRUE)
+    )
+  )
+}
+
+table1(
+  ~ age + sex | disease,
+  data = metadata,
+  render.continuous = render_continuous
+)
+```
